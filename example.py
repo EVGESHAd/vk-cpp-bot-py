@@ -37,7 +37,7 @@ import os
 import psutil
 
 outMsg["message"] = "id чата (пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
-outMsg["message"] += "запущен на :" + os.uname()[3] + "\n";
+outMsg["message"] += "запущен на: " + os.uname()[3] + "\n";
 outMsg["message"] += "Я сожрал оперативы: " + str(int(psutil.Process().memory_info().vms / (2**23))) + " Мб\n";
 outMsg["message"] += "Сообщений: " + str(msg_countComplete()) + "/" + str(msg_count()) + "\n";
 outMsg["message"] += "Запущен: " + getStartTime() + "\n";
