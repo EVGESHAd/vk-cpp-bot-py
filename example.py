@@ -38,6 +38,10 @@ import psutil
 
 outMsg["message"] = "id чата (пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
 outMsg["message"] += "запущен на: " + os.uname()[3] + "\n";
-outMsg["message"] += "Я сожрал оперативы: " + str(int(psutil.Process().memory_info().vms / (2**23))) + " Мб\n";
+for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)): 		
+	outMsg["message"] += 'CPU '+str(idx+1)+': '+str(cpu)+'%\n'
+mem = psutil.virtual_memory()
+MB = 2**20
+outMsg["message"] += 'Оперативы всего: '+str(int(mem.total / MB))+'MB\nИспользовано оперативы: '+str(int((mem.total - mem.available) / MB))+'MB\nСвободно оперативы: '+str(int(mem.available / MB))+'MB\nСожрано ботом: '+str(int(psutil.Process().memory_info().vms / MB / 8))+'MB\n'
 outMsg["message"] += "Сообщений: " + str(msg_countComplete()) + "/" + str(msg_count()) + "\n";
 outMsg["message"] += "Запущен: " + getStartTime() + "\n";
