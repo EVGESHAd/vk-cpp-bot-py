@@ -32,6 +32,16 @@ output message:
 
 other:
 	string getStartTime()
+
+vk:
+	string vk_upload(string path, string peer_id, string type)
+	string vk_send(string method, dict params, bool sendtoken)
+
+net:
+	string net_upload(string url, string filename, string params)
+	string net_download(string url, string filename, string params)
+	string vk_send(string method, dict params, bool sendtoken)
+
 """
 import os
 import psutil
