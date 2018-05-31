@@ -53,8 +53,8 @@ for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)):
 mem = psutil.virtual_memory()
 swp = psutil.swap_memory()
 MB = 2**20
-outMsg["message"] += 'Оперативы всего: '+str(int(mem.total / MB))+'MB\nИспользовано оперативы: '+str(int((mem.total - mem.available) / MB))+'MB\nСвободно оперативы: '+str(int(mem.available / MB))+'MB\nСожрано ботом: '+str(int(psutil.Process().memory_info().vms / MB / 8))+'MB\n'
+outMsg["message"] += 'RAM: '+str(int((mem.total - mem.available) / MB))+ '/' +str(int(mem.total / MB))+'MB\n'
 if(swp.total):
-	outMsg["message"] += 'Свопа всего: '+str(int(swp.total / MB))+'MB\nИспользовано свопа: '+str(int(swp.used / MB))+'MB\nСвободно свопа: '+str(int(swp.free / MB))+'MB\n'
-outMsg["message"] += "Сообщений: " + str(msg_countComplete()) + "/" + str(msg_count()) + "\n";
+	outMsg["message"] += 'SWAP: '+str(int(swp.free / MB))+ '/' +str(int(swp.total / MB))+'MB\n'
+outMsg["message"] += ' Из которых мною сожрано: '+str(int(psutil.Process().memory_info().vms / MB / 8))+'MB\n'
 outMsg["message"] += "Запущен: " + getStartTime() + "\n";
