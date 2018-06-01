@@ -18,7 +18,7 @@ while True:
 	s = s + 6
 starttime = time.time()
 sock.setblocking(0)
-while time.time() - starttime < 10:
+while time.time() - starttime < 2:
 	try:
 		serv = re.sub(r'\^\d{1}', '', sock.recvfrom(4096)[0][10:]).split('\\')
 		servs[serv[15]]=servs.get(serv[15], [])+[[serv[1]]+[serv[3]]+[serv[11]]+[serv[13]]+[str(int((time.time() - starttime)*1000))]]

@@ -57,4 +57,5 @@ outMsg["message"] += 'RAM: '+str(int((mem.total - mem.available) / MB))+ '/' +st
 if(swp.total):
 	outMsg["message"] += 'SWAP: '+str(int(swp.used / MB))+ '/' +str(int(swp.total / MB))+'MB\n'
 outMsg["message"] += 'Из которых мною сожрано: '+str(int(psutil.Process().memory_info().vms / MB / 8))+'MB\n'
-outMsg["message"] += "Запущен: " + getStartTime() + "\n";
+outMsg["message"] += "Сообщений: " + str(msg_countComplete()) + "/" + str(msg_count()) + "\n"
+outMsg["message"] += "Запущен: " + getStartTime() + "\n"
