@@ -46,7 +46,7 @@ net:
 import os
 import psutil
 
-outMsg["message"] = "id чата (пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
+outMsg["message"] = "id(пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
 #outMsg["message"] += "запущен на: " + os.uname()[3] + "\n";
 for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)):
 	outMsg["message"] += 'CPU '+str(idx+1)+': '+str(cpu)+'%\n'
