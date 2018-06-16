@@ -31,8 +31,13 @@ while time.time() - starttime < 2:
 		pass
 sock.close()
 msg=''
+slots['all']=[0, 0]
 for key in servs.keys():
 	msg+=key+'-'+str(slots[key][0])+'/'+str(slots[key][1])+'-'+str(slots[key][0]*100/slots[key][1])+'%\n'
  	for serv in servs[key]:
   		msg+='    '+serv[0]+'-'+serv[1]+'-'+serv[2]+'/'+serv[3]+'-('+serv[4]+'ms)\n'
+		slots['all'][0]+=int(serv[2])
+		slots['all'][1]+=int(serv[3])
+key='all'
+msg+=key+'-'+str(slots[key][0])+'/'+str(slots[key][1])+'-'+str(slots[key][0]*100/slots[key][1])+'%\n'
 outMsg["message"]=msg
