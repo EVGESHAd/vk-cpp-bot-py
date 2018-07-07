@@ -8,6 +8,7 @@ input messange:
 	char msg_flags
 	string msg
 	string lp_msg
+	list msg_imgs
 
 modules:
 	int money_get(string id)
