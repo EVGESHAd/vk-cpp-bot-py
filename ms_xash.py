@@ -5,7 +5,7 @@ import re
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 adr=('ms.xash.su', 27010)
 sock.bind(('0.0.0.0', 0))
-sock.sendto(b'1\xff0.0.0.0:0\0\0', adr)
+sock.sendto(b'0.19.2\xff0.0.0.0:0\0\0', adr)
 data = sock.recvfrom(4096)
 s = 6;
 servs={}

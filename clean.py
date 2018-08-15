@@ -15,4 +15,4 @@ for i in range(c):
 	if j['items'][i-offset]['out']:
 		ids+=str(j['items'][i-offset]['id'])+','
 vk_send('messages.delete',{'message_ids':ids, 'delete_for_all':'1'}, 1)
-outMsg['message']='done'
+outMsg={}
