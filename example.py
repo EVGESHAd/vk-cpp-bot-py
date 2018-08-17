@@ -41,7 +41,7 @@ vk:
 net:
 	string net_upload(string url, string filename, string params)
 	string net_download(string url, string filename, string params)
-	string vk_send(string method, dict params, bool sendtoken)
+	string net_send(string url, dict params, bool post_params)
 
 """
 import os
