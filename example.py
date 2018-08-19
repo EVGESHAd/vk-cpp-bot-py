@@ -48,6 +48,12 @@ net:
 import os
 import psutil
 
+net_info=net_info.split()
+net_info+=[int(net_info[0]) + int(net_info[2]) + int(net_info[4])]
+net_info+=[int(net_info[1]) + int(net_info[3]) + int(net_info[5])]
+for i in range(8):
+ net_info[i]=format(int(net_info[i])/(2**20), '.1f')
+
 outMsg["message"] = "id(пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
 #outMsg["message"] += "запущен на: " + os.uname()[3] + "\n";
 for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)):
@@ -61,3 +67,8 @@ if(swp.total):
 outMsg["message"] += 'Из которых мною сожрано: '+str(int(psutil.Process().memory_info().rss / MB ))+'MB\n'
 outMsg["message"] += "Сообщений: " + str(msg_countComplete()) + "/" + str(msg_count()) + "\n"
 outMsg["message"] += "Запущен: " + getStartTime() + "\n"
+outMsg["message"] += "\nТрафик: \n"
+outMsg["message"] += "Запросы: ↑" + net_info[0] + "MB ↓" + net_info[1] + "MB\n"
+outMsg["message"] += "Выгрузка: ↑" + net_info[2] + "MB ↓" + net_info[3] + "MB\n"
+outMsg["message"] += "Закачка: ↑" + net_info[4] + "MB ↓" + net_info[5] + "MB\n"
+outMsg["message"] += "Всего: ↑" + net_info[6] + "MB ↓" + net_info[7] + "MB\n"
