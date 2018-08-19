@@ -42,6 +42,7 @@ net:
 	string net_upload(string url, string filename, string params)
 	string net_download(string url, string filename, string params)
 	string net_send(string url, dict params, bool post_params)
+	string net_info <send dl, send ul, upload dl, upload ul, download dl, download ul>
 
 """
 import os
