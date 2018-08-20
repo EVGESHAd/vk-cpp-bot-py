@@ -64,7 +64,7 @@ MB = 2**20
 outMsg["message"] += 'RAM: '+str(int((mem.total - mem.available) / MB))+ '/' +str(int(mem.total / MB))+'MB\n'
 if(swp.total):
 	outMsg["message"] += 'SWAP: '+str(int(swp.used / MB))+ '/' +str(int(swp.total / MB))+'MB\n'
-outMsg["message"] += 'Из которых мною сожрано: '+str(int(psutil.Process().memory_info().rss / MB ))+'MB\n'
+outMsg["message"] += 'Из которых мною сожрано: '+str(int(psutil.Process().memory_info().rss / 1024 ))+'KB\n'
 outMsg["message"] += "Сообщений: " + str(msg_countComplete()) + "/" + str(msg_count()) + "\n"
 outMsg["message"] += "Запущен: " + getStartTime() + "\n"
 outMsg["message"] += "\nТрафик: \n"

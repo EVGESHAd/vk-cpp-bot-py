@@ -7,7 +7,7 @@ r34text = '-fur+-scat*+-furry+-dragon+-guro+-animal_penis+-animal+-wolf+-fox+-we
 outMsg['message']=''
 outMsg['attachment']=''
 try:
-	resp = untangle.parse('http://0s.oj2wyzjtgqxhq6dy.cmle.ru/index.php?page=dapi&s=post&limit=10000&q=index&tags='+str(r34text)).posts.post
+	resp = untangle.parse(net_send('http://0s.oj2wyzjtgqxhq6dy.cmle.ru/index.php?page=dapi&s=post&limit=10000&q=index&tags='+str(r34text), {}, 1)).posts.post
 	if not os.path.exists('34'):
 		os.mkdir('34')
 	indexs=list(range(len(resp)))
