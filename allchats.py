@@ -8,12 +8,13 @@ words={}
 count=0
 ncount=0
 chat_id=0
+outMsg['message']=str(chat_id)
+m=str(json.loads(vk_send('messages.send', outMsg, 1))['response'])
 try:
 	while True:
 		old_id=0
 		chat_id+=1
-		outMsg['message']=str(chat_id)
-		vk_send('messages.send', outMsg, 1) 
+		vk_send("messages.edit", {"message_id": m, "message": str(chat_id), "peer_id": outMsg["peer_id"]}, 1)
 		c = json.loads(vk_send('messages.getHistory',{'count':'1', 'chat_id':str(chat_id), 'rev':'1'},1))['response']
 		respC = int((c['count']+200-c['count']%200)/200)
 		for i in range(respC):
@@ -29,6 +30,7 @@ try:
 				old_id=msg['user_id']
 except:
 	0
+vk_send("messages.edit", {"message_id": m, "message": 'done', "peer_id": outMsg["peer_id"]}, 1)
 top=[(k, res[k]) for k in sorted(res.keys(), key=res.get, reverse=True)]
 words=[(k, words[k]) for k in sorted(words.keys(), key=words.get, reverse=True)]
 users=[]
@@ -46,7 +48,7 @@ for i in range(math.ceil(len(users)/1000)):
 	if us!='':
 		us=json.loads(vk_send('users.get',{'user_ids':us, 'fields':'domain'},1))['response']
 		for u in us:
-			names[u['id']]=u['first_name']+'('+u['domain']+')'
+			names[u['id']]=u['first_name']+'( vk.com/'+u['domain']+' )'
 for i in range(math.ceil(len(grups)/500)):
 	gs=''
 	for g in grups[500*i:500+500*i]:
@@ -54,10 +56,12 @@ for i in range(math.ceil(len(grups)/500)):
 	if gs!='':
 		gs=json.loads(vk_send('groups.getById',{'group_ids':gs},1))['response']
 		for g in gs:
-			names[-g['id']]=g['name']+'('+g['screen_name']+')'
+			names[-g['id']]=g['name']+'( vk.com/'+g['screen_name']+' )'
 outMsg['message']='Сообщений: '+str(count)+'('+str(ncount)+')\n'
 outMsg['message']+='\nТоп человек:\n'
 for i in range(len(top)):
+	if top[i][1]==1:
+		break
 	if names.get(top[i][0], '')=='':
 		continue
 	outMsg['message']+=str(i+1)+') '+names[top[i][0]]+'-'+str(top[i][1])+'\n'

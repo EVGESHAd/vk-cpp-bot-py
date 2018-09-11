@@ -6,5 +6,5 @@ for s in j[1]:
 	outMsg['message']+='lurkmore.to/'+s.replace(' ', '_')+'\n'
 if outMsg['message']=='':
 	outMsg['message']='нетю такого'
-else:
-	outMsg['message']+='<<->> замени на точку'
+#else:
+#	outMsg['message']+='<<->> замени на точку'
