@@ -47,6 +47,8 @@ net:
 """
 import os
 import psutil
+import cpuinfo
+cpu=cpuinfo.cpuinfo.get_cpu_info()
 
 net_info=net_info.split()
 net_info+=[int(net_info[0]) + int(net_info[2]) + int(net_info[4])]
@@ -56,6 +58,7 @@ for i in range(8):
 
 outMsg["message"] = "id(пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
 #outMsg["message"] += "запущен на: " + os.uname()[3] + "\n";
+outMsg["message"] += "CPU: " + cpu['brand'] + ' ' + cpu['hardware'] + "\n";
 for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)):
 	outMsg["message"] += 'CPU '+str(idx+1)+': '+str(cpu)+'%\n'
 mem = psutil.virtual_memory()
