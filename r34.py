@@ -12,7 +12,7 @@ try:
 		os.mkdir('34')
 	indexs=list(range(len(resp)))
 	random.shuffle(indexs)
-	for i in indexs[0:10]:
+	for i in indexs[0:4]:
 		#outMsg['message']+=str(i+1)+'/'+str(len(resp))+'\n'+str(resp[i]['tags'])+'\n\n'
 		net_download(str(resp[i]['file_url']), '34/'+str(msg_id)+'_'+str(i)+'.jpg', '')
 		outMsg['attachment']+=vk_upload('34/'+str(msg_id)+'_'+str(i)+'.jpg', outMsg['peer_id'], 'photo')+','
