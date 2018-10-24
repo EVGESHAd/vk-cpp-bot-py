@@ -54,7 +54,7 @@ net_info=net_info.split()
 net_info+=[int(net_info[0]) + int(net_info[2]) + int(net_info[4])]
 net_info+=[int(net_info[1]) + int(net_info[3]) + int(net_info[5])]
 for i in range(8):
- net_info[i]=format(int(net_info[i])/(2**20), '.1f')
+ net_info[i]=format(int(net_info[i])/(2**20), '.3f')
 
 outMsg["message"] = "id(пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
 #outMsg["message"] += "запущен на: " + os.uname()[3] + "\n";
