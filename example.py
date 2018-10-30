@@ -58,7 +58,10 @@ for i in range(8):
 
 outMsg["message"] = "id(пользователь/чат): " + str(user_id) + "/" + str(chat_id) + "\n";
 #outMsg["message"] += "запущен на: " + os.uname()[3] + "\n";
-outMsg["message"] += "CPU: " + cpu['brand'] + ' ' + cpu['hardware'] + "\n";
+try:
+	outMsg["message"] += "CPU: " + cpu['brand'] + "\n";
+except:
+	1
 for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)):
 	outMsg["message"] += 'CPU '+str(idx+1)+': '+str(cpu)+'%\n'
 mem = psutil.virtual_memory()
