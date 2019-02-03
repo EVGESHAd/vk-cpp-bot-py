@@ -20,6 +20,7 @@ while True:
 	port = struct.unpack('>H',data[0][s+4:s+6])[0]
 	if port == 0: break
 	sock.sendto(b'\xff\xff\xff\xffinfo 48',(ipstr,port))
+	sock.sendto(b'\xff\xff\xff\xffinfo 49',(ipstr,port))
 	s = s + 6
 starttime = time.time()
 sock.setblocking(0)
