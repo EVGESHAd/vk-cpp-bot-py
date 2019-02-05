@@ -16,5 +16,5 @@ try:
 		#outMsg['message']+=str(i+1)+'/'+str(len(resp))+'\n'+str(resp[i]['tags'])+'\n\n'
 		net_download(str(resp[i]['file_url']), '34/'+str(msg_id)+'_'+str(i)+'.jpg', '')
 		outMsg['attachment']+=vk_upload('34/'+str(msg_id)+'_'+str(i)+'.jpg', outMsg['peer_id'], 'photo')+','
-except:
-	outMsg['message']+='¯\\_(ツ)_/¯'
+except Exception as e:
+	outMsg['message']+=e

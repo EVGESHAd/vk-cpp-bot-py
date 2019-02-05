@@ -14,7 +14,7 @@ else:
 			id=str(json.loads(vk_send('users.get',{'user_ids':id},1))['response'][0]['id'])
 		outMsg["attachment"]=vk_upload("py/357_shot1.wav", outMsg["peer_id"], "audio_message");
 		vk_send('messages.send', outMsg, 1)
-		vk_send('messages.removeChatUser', {'chat_id':str(chat_id), 'user_id':id}, 1)
+		json.loads(vk_send('messages.removeChatUser', {'chat_id':str(chat_id), 'user_id':id}, 1))['response']
 		outMsg={'peer_id':outMsg['peer_id']}
 	except:
 		outMsg['message']='¯\\_(ツ)_/¯'
